@@ -1,0 +1,32 @@
+{
+    "button": [{
+        "name": "航班服务",
+        "sub_button": [{	
+            "type": "view",
+            "name": "机票预订",
+            "url": "http://www.ceair.com/"
+        }]
+    }, {
+        "name": "会员服务",
+        "sub_button": [{	
+            "type": "view",
+            "name": "幸运转盘",
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6de886ca204ea8c9&redirect_uri=https%3A%2F%2Foracle.doitchina.com%2Fmile%2Findex.html&response_type=code&scope=snsapi_base&state=100#wechat_redirect"
+        }, {	
+            "type": "view",
+            "name": "会员咨询",
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6de886ca204ea8c9&redirect_uri=https%3A%2F%2Foracle.doitchina.com%2Fceairbot%2Findex.html&response_type=code&scope=snsapi_base&state=000#wechat_redirect"
+        }, {	
+            "type": "view",
+            "name": "会员商城",
+            "url": "http://shopping.ceair.com/"
+        }]
+    }, {
+        "name": "我的",
+        "sub_button": [{	
+            "type": "view",
+            "name": "我的会员卡",
+            "url": "https://easternmiles.ceair.com/members/"
+        }]
+    }]
+}
