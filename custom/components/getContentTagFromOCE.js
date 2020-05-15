@@ -1,7 +1,5 @@
 'use strict';
 
-var isEmpty = require('../util/baseUtils').isEmpty;
-var getToken = require('../util/tokenUtils').tokenUtils;
 var config = require('../util/config');
 var request = require("request");
 var fs = require('fs');
@@ -64,6 +62,7 @@ module.exports = {
                     }
                 });
 
+                console.log('downloading')
                 var img_filename = timeS + `pic.png`;
                 var mPath = locPath + img_filename;
                 request(img_src).pipe(fs.createWriteStream(mPath)).on("close", function (err) {
