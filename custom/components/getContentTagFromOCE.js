@@ -1,11 +1,9 @@
 'use strict';
 
-var RESTClient = require('node-rest-client').Client;
 var isEmpty = require('../util/baseUtils').isEmpty;
 var getToken = require('../util/tokenUtils').tokenUtils;
 var config = require('../util/config');
 var request = require("request");
-var restClient = new RESTClient();
 var fs = require('fs');
 
 
