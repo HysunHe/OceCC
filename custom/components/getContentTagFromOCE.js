@@ -42,10 +42,10 @@ module.exports = {
             done();
         } else {
 
-console.log("imageURL: " + imageUrl);
+            console.log("imageURL: " + imageUrl);
             downloadUrl(imageUrl).then(function (data) {
                 return runAsync1(data);
-            }) .then(function (data1) {
+            }).then(function (data1) {
                 return runAsync2(data1);
             }).then(function (data2) {
                 return runAsync3(data2);
@@ -63,14 +63,22 @@ console.log("imageURL: " + imageUrl);
                 });
 
                 console.log('downloading')
-                var img_filename = timeS + `pic.png`;
+                var img_filename = timeS + `pic.jpg`;
                 var mPath = locPath + img_filename;
-                request(img_src).pipe(fs.createWriteStream(mPath)).on("close", function (err) {
-                    console.log("文件[" + img_filename + "]下载完毕");
-                    console.log(mPath);
-                    locImageName = img_filename;
-                    resolve(mPath);
-                });
+
+                fs.createReadStream(mPath)
+                    .pipe(fs.createWriteStream(mPath))
+                    .on('error', function(e){
+                        console.error(e)
+                    })
+
+
+                // request(img_src).pipe(fs.createWriteStream(mPath)).on("close", function (err) {
+                //     console.log("文件[" + img_filename + "]下载完毕");
+                //     console.log(mPath);
+                //     locImageName = img_filename;
+                //     resolve(mPath);
+                // });
             });
             return p;
         }
