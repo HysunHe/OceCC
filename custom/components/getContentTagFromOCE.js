@@ -28,7 +28,7 @@ module.exports = {
         var checker = true;
         var timeS = new Date().getTime();
         var locImageName = "";
-        var locPath = "../image/";
+        var locPath = "./image/";
 
         var status_adtp = "failed";
         var imageUrl = conversation.properties().image;
