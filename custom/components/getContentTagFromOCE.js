@@ -28,7 +28,7 @@ module.exports = {
         var checker = true;
         var timeS = new Date().getTime();
         var locImageName = "";
-        var locPath = "./image/";
+        var locPath = "image/";
 
         var status_adtp = "failed";
         var imageUrl = conversation.properties().image;
@@ -42,7 +42,7 @@ module.exports = {
             done();
         } else {
 
-
+console.log("imageURL: " + imageUrl);
             downloadUrl(imageUrl).then(function (data) {
                 return runAsync1(data);
             }) .then(function (data1) {
