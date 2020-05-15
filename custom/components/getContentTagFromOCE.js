@@ -3,7 +3,7 @@
 var config = require('../util/config');
 var request = require("request");
 var fs = require('fs');
-
+var Path = require('path')
 
 module.exports = {
     metadata: () => ({
@@ -65,20 +65,16 @@ module.exports = {
                 console.log('downloading')
                 var img_filename = timeS + `pic.jpg`;
                 var mPath = locPath + img_filename;
-
-                fs.createReadStream(mPath)
-                    .pipe(fs.createWriteStream(mPath))
-                    .on('error', function(e){
-                        console.error(e)
-                    })
+                console.log('downloading to ' + mPath);
 
 
-                // request(img_src).pipe(fs.createWriteStream(mPath)).on("close", function (err) {
-                //     console.log("文件[" + img_filename + "]下载完毕");
-                //     console.log(mPath);
-                //     locImageName = img_filename;
-                //     resolve(mPath);
-                // });
+
+                request(img_src).pipe(fs.createWriteStream(mPath, { mode: 0o755 })).on("close", function (err) {
+                    console.log("文件[" + img_filename + "]下载完毕");
+                    console.log(mPath);
+                    locImageName = img_filename;
+                    resolve(mPath);
+                });
             });
             return p;
         }
