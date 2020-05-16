@@ -71,12 +71,12 @@ module.exports = {
 
                     var writeStream=fs.createWriteStream(mPath,{autoClose:true})
                     console.log('d5 ');
-                    request(img_src).pipe(writeStream);
-                    console.log('d6 ');
+                    // request(img_src).pipe(writeStream);
+                    // console.log('d6 ');
                     writeStream.on('finish',function(){
-                        console.log(mPath);
-                        locImageName = img_filename;
-                        resolve(mPath);
+                        // console.log(mPath);
+                        // locImageName = img_filename;
+                        // resolve(mPath);
                         console.log('文件写入成功')
                     })
 
