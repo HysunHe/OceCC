@@ -56,26 +56,44 @@ module.exports = {
 
         function downloadUrl(img_src) {
             var p = new Promise(function (resolve, reject) {
-                request.head(img_src, function (err, res, body) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
+                    request.head(img_src, function (err, res, body) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
 
-                console.log('downloading')
-                var img_filename = timeS + `pic.jpg`;
-                var mPath = locPath + img_filename;
-                console.log('downloading to ' + mPath);
+                    console.log('downloading')
+                    var img_filename = timeS + `pic.jpg`;
+                    var mPath = locPath + img_filename;
+                    console.log('downloading to ' + mPath);
 
 
+                    var writeStream = fs.createWriteStream(mPath);
+                    var readStream = request(img_src)
+                    readStream.pipe(writeStream);
+                    readStream.on('end', function(response) {
+                        console.log('文件写入成功');
+                        writeStream.end();
 
-                request(img_src).pipe(fs.createWriteStream(mPath, { mode: 0o755 })).on("close", function (err) {
-                    console.log("文件[" + img_filename + "]下载完毕");
-                    console.log(mPath);
-                    locImageName = img_filename;
-                    resolve(mPath);
-                });
-            });
+                            console.log("文件[" + img_filename + "]下载完毕");
+                            console.log(mPath);
+                            locImageName = img_filename;
+                            resolve(mPath);
+                    });
+
+                    writeStream.on("finish", function() {
+                        console.log("ok");
+                    });
+
+                    // request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
+                    //     console.log("文件[" + img_filename + "]下载完毕");
+                    //     console.log(mPath);
+                    //     locImageName = img_filename;
+                    //     resolve(mPath);
+                    // });
+                }
+                )
+            ;
             return p;
         }
 
@@ -306,4 +324,5 @@ module.exports = {
 
 
     }
-};
+}
+;
