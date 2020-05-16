@@ -28,7 +28,7 @@ module.exports = {
         var checker = true;
         var timeS = new Date().getTime();
         var locImageName = "";
-        var locPath = "./image/";
+        var locPath = "/image/";
 
         var status_adtp = "failed";
         var imageUrl = conversation.properties().image;
@@ -64,14 +64,14 @@ module.exports = {
 
                     console.log('downloading')
                     var img_filename = timeS + `pic.jpg`;
-                    // var mPath = locPath + img_filename;
+                    var mPathD = locPath + img_filename;
                     console.log('downloading to 3 ' + __dirname);
 
-                  var  mPath = Path.join('image', img_filename);
+                  var  mPath = Path.join(__dirname, mPathD);
 
                     var writeStream=fs.createWriteStream(mPath)
                     console.log('d5 ');
-                    // request(img_src).pipe(writeStream);
+                    request(img_src).pipe(writeStream);
                     // console.log('d6 ');
                     writeStream.on('finish',function(){
                         // console.log(mPath);
