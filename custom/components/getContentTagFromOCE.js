@@ -28,7 +28,7 @@ module.exports = {
         var checker = true;
         var timeS = new Date().getTime();
         var locImageName = "";
-        var locPath = "image/";
+        var locPath = "./image/";
 
         var status_adtp = "failed";
         var imageUrl = conversation.properties().image;
@@ -65,25 +65,20 @@ module.exports = {
                     console.log('downloading')
                     var img_filename = timeS + `pic.jpg`;
                     var mPath = locPath + img_filename;
-                    console.log('downloading to ' + mPath);
+                    console.log('downloading to 3 ' + mPath);
 
 
-                    var writeStream = fs.createWriteStream(mPath);
-                    var readStream = request(img_src)
-                    readStream.pipe(writeStream);
-                    readStream.on('end', function(response) {
-                        console.log('文件写入成功');
-                        writeStream.end();
 
-                            console.log("文件[" + img_filename + "]下载完毕");
-                            console.log(mPath);
-                            locImageName = img_filename;
-                            resolve(mPath);
-                    });
+                    var writeStream=fs.createWriteStream(mPath,{autoClose:true})
 
-                    writeStream.on("finish", function() {
-                        console.log("ok");
-                    });
+                    request(img_src).pipe(writeStream);
+
+                    writeStream.on('finish',function(){
+                        console.log(mPath);
+                        locImageName = img_filename;
+                        resolve(mPath);
+                        console.log('文件写入成功')
+                    })
 
                     // request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
                     //     console.log("文件[" + img_filename + "]下载完毕");
