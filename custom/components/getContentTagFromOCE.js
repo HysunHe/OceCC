@@ -70,14 +70,13 @@ module.exports = {
                   var  mPath = Path.join(__dirname, mPathD);
 
                     var writeStream=fs.createWriteStream(mPath)
-                    console.log('d5 ');
                     request(img_src).pipe(writeStream);
-                    // console.log('d6 ');
                     writeStream.on('finish',function(){
                         // console.log(mPath);
-                        // locImageName = img_filename;
-                        // resolve(mPath);
+                        locImageName = img_filename;
                         console.log('文件写入成功')
+                        resolve(mPath);
+
                     })
 
                     // request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
