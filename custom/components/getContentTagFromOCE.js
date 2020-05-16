@@ -64,12 +64,12 @@ module.exports = {
 
                     console.log('downloading')
                     var img_filename = timeS + `pic.jpg`;
-                    var mPath = locPath + img_filename;
+                    // var mPath = locPath + img_filename;
                     console.log('downloading to 3 ' + mPath);
 
+                  var  mPath = Path.join('image', img_filename);
 
-
-                    var writeStream=fs.createWriteStream(mPath,{autoClose:true})
+                    var writeStream=fs.createWriteStream(mPath)
                     console.log('d5 ');
                     // request(img_src).pipe(writeStream);
                     // console.log('d6 ');
