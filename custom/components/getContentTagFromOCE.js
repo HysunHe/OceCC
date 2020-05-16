@@ -131,12 +131,12 @@ module.exports = {
                     }
                     ;
 
-                    conversation.reply(`Greetings ` + body)
-                    conversation.transition(status_adtp);
-                    done();
-                    // console.log(body.id);
-                    // var contentID = body.id;
-                    // resolve(contentID);
+                    // conversation.reply(`Greetings ` + body)
+                    // conversation.transition(status_adtp);
+                    // done();
+                    console.log(body.id);
+                    var contentID = body.id;
+                    resolve(contentID);
                 });
             });
             return p;
