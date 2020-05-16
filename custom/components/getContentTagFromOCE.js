@@ -65,7 +65,7 @@ module.exports = {
                     console.log('downloading')
                     var img_filename = timeS + `pic.jpg`;
                     // var mPath = locPath + img_filename;
-                    console.log('downloading to 3 ' + mPath);
+                    console.log('downloading to 3 ' + __dirname);
 
                   var  mPath = Path.join('image', img_filename);
 
