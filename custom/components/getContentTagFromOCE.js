@@ -67,11 +67,11 @@ module.exports = {
                     var mPathD = locPath + img_filename;
                     console.log('downloading to 3 ' + __dirname);
 
-                  var  mPath = Path.join(__dirname, mPathD);
+                    var mPath = Path.join(__dirname, mPathD);
 
-                    var writeStream=fs.createWriteStream(mPath)
+                    var writeStream = fs.createWriteStream(mPath)
                     request(img_src).pipe(writeStream);
-                    writeStream.on('finish',function(){
+                    writeStream.on('open', function () {
                         // console.log(mPath);
                         locImageName = img_filename;
                         console.log('文件写入成功')
@@ -96,6 +96,9 @@ module.exports = {
             var p = new Promise(function (resolve, reject) {
 
                 var file = fs.createReadStream(imgPath);
+
+                console.log(file);
+
                 var options = {
                     method: 'POST',
                     url: oceUrl + '/documents/api/1.2/files/data',
@@ -134,8 +137,8 @@ module.exports = {
                     // conversation.reply(`Greetings ` + body)
                     // conversation.transition(status_adtp);
                     // done();
-                    console.log(body.id);
-                    var contentID = body.id;
+                    console.log(JSON.parse(body).id);
+                    var contentID = JSON.parse(body).id;
                     resolve(contentID);
                 });
             });
@@ -227,7 +230,7 @@ module.exports = {
                         }
                 };
                 request(options, function (error, response, body) {
-                        // body = JSON.parse(body);
+                        body = JSON.parse(body);
                         if (error) {
                             conversation.transition(status_adtp);
                             conversation.keepTurn(true);
@@ -293,8 +296,8 @@ module.exports = {
                 }
                 ;
                 console.log(typeof body);
-                // console.log(JSON.parse(body));
-                // body = JSON.parse(body)
+                console.log(JSON.parse(body));
+                body = JSON.parse(body)
                 if (body.data.length != 0) {
                     var tagArr = [];
                     body.data.forEach(function (v, i) {
