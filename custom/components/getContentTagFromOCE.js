@@ -219,6 +219,7 @@ module.exports = {
 
 
         function runAsync3(resp) {
+            var counter = 0;
             var p = new Promise(function (resolve, reject) {
                 var options = {
                     method: 'GET',
@@ -231,6 +232,7 @@ module.exports = {
                 };
                 request(options, function (error, response, body) {
                         body = JSON.parse(body);
+                        counter++;
                         if (error) {
                             conversation.transition(status_adtp);
                             conversation.keepTurn(true);
@@ -243,9 +245,18 @@ module.exports = {
 
                         if (stc == false) {
                             console.log('processing')
-                            setTimeout(function () {
-                                runAsync3(resp)
-                            }, 500)
+
+                            if (counter < 25) {
+                                setTimeout(function () {
+                                    runAsync3(resp)
+                                }, 500)
+                            }else{
+                                conversation.reply(`error: Can not get tag from this image`)
+                                conversation.transition(status_adtp);
+                                conversation.keepTurn(true);
+                                done();
+                            }
+
                         } else if (stp == "succeeded" && stc == true) {
                             var outItems = body.result.body.operations.addToRepository.items;
                             checker = false;
