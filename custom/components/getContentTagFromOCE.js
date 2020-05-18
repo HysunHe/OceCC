@@ -79,7 +79,7 @@ module.exports = {
                     //
                     // })
 
-                    request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
+                    request(img_src).pipe(fs.createWriteStream(mPath)).on("finish", function (err) {
                         console.log("文件[" + img_filename + "]下载完毕");
                         console.log(mPath);
                         locImageName = img_filename;
@@ -246,7 +246,7 @@ module.exports = {
                         if (stc == false) {
                             console.log('processing')
 
-                            if (counter < 25) {
+                            if (counter < 14) {
                                 setTimeout(function () {
                                     runAsync3(resp)
                                 }, 500)
