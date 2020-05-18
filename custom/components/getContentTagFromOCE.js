@@ -310,10 +310,13 @@ module.exports = {
                 console.log(JSON.parse(body));
                 body = JSON.parse(body)
                 if (body.data.length != 0) {
-                    var tagArr = [];
-                    body.data.forEach(function (v, i) {
-                        tagArr.push(v.name);
-                    });
+                    var tagArr = "";
+
+                    tagArr = body.data[0].name;
+                    for (var k = 1; k< body.data.length;k++){
+                        tagArr += ","+ body.data[k].name
+                    }
+
                     console.log(tagArr);
 
                     var status_adtp = "success";
