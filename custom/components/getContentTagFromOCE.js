@@ -63,28 +63,28 @@ module.exports = {
                     });
 
                     console.log('downloading')
-                    var img_filename = timeS + `pic.jpg`;
+                    var img_filename = timeS + `pic.png`;
                     var mPathD = locPath + img_filename;
                     console.log('downloading to 3 ' + __dirname);
 
                     var mPath = Path.join(__dirname, mPathD);
 
-                    var writeStream = fs.createWriteStream(mPath)
-                    request(img_src).pipe(writeStream);
-                    writeStream.on('open', function () {
-                        // console.log(mPath);
-                        locImageName = img_filename;
-                        console.log('文件写入成功')
-                        resolve(mPath);
-
-                    })
-
-                    // request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
-                    //     console.log("文件[" + img_filename + "]下载完毕");
-                    //     console.log(mPath);
+                    // var writeStream = fs.createWriteStream(mPath)
+                    // request(img_src).pipe(writeStream);
+                    // writeStream.on('open', function () {
+                    //     // console.log(mPath);
                     //     locImageName = img_filename;
+                    //     console.log('文件写入成功')
                     //     resolve(mPath);
-                    // });
+                    //
+                    // })
+
+                    request(img_src).pipe(fs.createWriteStream(mPath, {mode: 0o755})).on("open", function (err) {
+                        console.log("文件[" + img_filename + "]下载完毕");
+                        console.log(mPath);
+                        locImageName = img_filename;
+                        resolve(mPath);
+                    });
                 }
                 )
             ;
@@ -94,7 +94,7 @@ module.exports = {
 
         function runAsync1(imgPath) {
             var p = new Promise(function (resolve, reject) {
-
+                console.log('in runAsyunc1 ' + imgPath);
                 var file = fs.createReadStream(imgPath);
 
                 console.log(file);
