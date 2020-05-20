@@ -37,7 +37,6 @@ module.exports = {
         function runAsync1() {
             var p = new Promise(function (resolve, reject) {
                 var status_adtp = "failed";
-                console.log(file);
 
                 var options = {
                     method: 'PUT',
