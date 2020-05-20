@@ -159,20 +159,23 @@ module.exports = {
                             "id":"101",
                             "name":"test1",
                             "price":"$120",
-                            "url":"www.baidu.com",
+                            "url":"https://www.oracle.com/cloud/content-and-experience-management/",
+                            "imageUrl":"https://iili.io/J0ygZ7.md.jpg",
                             "des":"this a description for test1 XXXXXXXXXXXX"
                         },{
                             "id":"102",
                             "name":"test2",
                             "price":"$140",
-                            "url":"www.baidu.com",
-                            "des":"this a description for test1 XXXXXXXXXXXX"
+                            "url":"https://www.oracle.com/index.html",
+                            "imageUrl":"https://www.milanstand.com/images/201803/goods_img/37321_P_1520570187236.JPG",
+                            "des":"this a description for test2 XXXXXXXXXXXX"
                         },{
                             "id":"103",
                             "name":"test3",
                             "price":"$160",
-                            "url":"www.baidu.com",
-                            "des":"this a description for test1 XXXXXXXXXXXX"
+                            "url":"https://developer.oracle.com/ai-ml/",
+                            "imageUrl":"https://p0.ssl.qhimgs4.com/t0197888a68d5955dbc.jpg",
+                            "des":"this a description for test3 XXXXXXXXXXXX"
                         }
                     ]
 
