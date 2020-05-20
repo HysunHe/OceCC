@@ -28,7 +28,7 @@ module.exports = {
         var gotTag1 = conversation.properties().tag1;
         var gotTag2 = conversation.properties().tag2;
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
+        var status_adtp = "failed";
 
         runAsync1().then(function (data) {
             return runAsync2();
@@ -36,7 +36,7 @@ module.exports = {
 
         function runAsync1() {
             var p = new Promise(function (resolve, reject) {
-                var status_adtp = "failed";
+
 
                 var options = {
                     method: 'PUT',
@@ -102,9 +102,8 @@ module.exports = {
                         reject(error);
                     }
                     ;
-
+                    console.log("###############set up conditions ###########");
                     console.log(body);
-                    console.log(typeof body)
                     if (body.isPublished){
                         resolve();
                     }
@@ -143,11 +142,11 @@ module.exports = {
                         reject(error);
                     };
 
+                    console.log("###############see running results ###########");
+                    console.log(body);
 
-                    console.log("recom2 -" + body);
-                    console.log(typeof body);
 
-                    var itemsCount = JSON.parse(body).results.count;
+                    var itemsCount = body.results.count;
                     console.log(itemsCount);
                     if (itemsCount == 0){
 
