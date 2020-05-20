@@ -34,12 +34,9 @@ module.exports = {
             return runAsync2();
         });
 
-        function runAsync1(imgPath) {
+        function runAsync1() {
             var p = new Promise(function (resolve, reject) {
-                console.log('in runAsyunc1 ' + imgPath);
-                var file = fs.createReadStream(imgPath);
                 var status_adtp = "failed";
-
                 console.log(file);
 
                 var options = {
