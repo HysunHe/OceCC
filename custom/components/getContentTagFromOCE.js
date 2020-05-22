@@ -306,7 +306,7 @@ module.exports = {
                     conversation.keepTurn(true);
                     done();
                 }
-                ;
+
                 console.log(typeof body);
                 console.log(JSON.parse(body));
                 body = JSON.parse(body)
@@ -315,6 +315,8 @@ module.exports = {
 
                     tagArr = body.data[0].name;
                     for (var k = 1; k< body.data.length;k++){
+
+                        if(!tagIsJunk(body.data[k].name))
                         tagArr += ","+ body.data[k].name
                     }
 
@@ -332,6 +334,73 @@ module.exports = {
                 }
 
             });
+        }
+
+        let notUseTages = [
+            "valise",
+            "weekender",
+            "after-shave",
+            "after-shave lotion",
+            "smelling bottle",
+            "sweep hand",
+            "sweep-second",
+            "tacheometer",
+            "tachymeter",
+            "textile",
+            "ticker",
+            "timekeeper",
+            "timepiece",
+            "timer",
+            "toilet articles",
+            "toilet water",
+            "toiletry",
+            "poke",
+            "portfolio",
+            "purse",
+            "sack",
+            "sacking",
+            "satchel",
+            "second hand",
+            "patchouli",
+            "patchouly",
+            "overnighter",
+            "pachouli",
+            "hand",
+            "holdall",
+            "horologe",
+            "hour hand",
+            "imitation leather",
+            "indicator",
+            "instrument",
+            "leatherette",
+            "little hand",
+            "mailbag",
+            "man-made object",
+            "material",
+            "measuring device",
+            "measuring instrument",
+            "measuring system",
+            "mechanism",
+            "minute hand",
+            "movement",
+            "container",
+            "crystal",
+            "device",
+            "dial",
+            "eau de cologne",
+            "eau de toilette",
+            "fabric",
+            "briefcase",
+            "broad arrow",
+            "big hand",
+            "chronograph",
+            "chronoscope",
+            "cloth",
+            "cologne"
+        ]
+
+        function tagIsJunk(tag){
+            return notUseTages.some(item => item == tag )
         }
 
 

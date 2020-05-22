@@ -222,7 +222,7 @@ module.exports = {
                             var nName = v.name;
                             var nPrice = '$' + v.fields.price.toString();
                             var nStore = v.fields.industry[0];
-                            var nImage = "https://www.oracle.com/a/ocom/img/rc32-app-dev-extend-applications.png";
+                            var nImage = "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/published/api/v1.1/assets/" + nImageId+ "/Small?format=jpg&type=responsiveimage&channelToken=4e202a590f8d4f6eaabc7e95e2f9afa1"
                             var nDes = v.fields.summary;
                             var nUrl = oceUrl + '/sites/preview/onlineshop/storydetails/SE-Story/' + v.id + '/' + v.slug;
 

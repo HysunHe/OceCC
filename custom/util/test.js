@@ -17,7 +17,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 var url = 'https://iili.io/J0ygZ7.md.jpg';  //一张网络图片
 var checker = true;
-test.js
 var timeS = new Date().getTime();
 var locImageName = "";
 var locPath = "../components/image/";
@@ -245,14 +244,14 @@ function runAsync4(reId) {
 
     });
 }
-
-downloadUrl(url).then(function (data) {
-    return runAsync1(data);
-}).then(function (data1) {
-    return runAsync2(data1);
-}).then(function (data2) {
-    return runAsync3(data2);
-});
+//
+// downloadUrl(url).then(function (data) {
+//     return runAsync1(data);
+// }).then(function (data1) {
+//     return runAsync2(data1);
+// }).then(function (data2) {
+//     return runAsync3(data2);
+// });
 // runAsync4('CONTA5191D5E1BAC4F9A9FA044E31E464F9A');
 //
 // var options = {
@@ -361,102 +360,74 @@ downloadUrl(url).then(function (data) {
 //     });
 // }
 
+let notUseTages = [
+    "valise",
+    "weekender",
+    "after-shave",
+    "after-shave lotion",
+    "smelling bottle",
+    "sweep hand",
+    "sweep-second",
+    "tacheometer",
+    "tachymeter",
+    "textile",
+    "ticker",
+    "timekeeper",
+    "timepiece",
+    "timer",
+    "toilet articles",
+    "toilet water",
+    "toiletry",
+    "poke",
+    "portfolio",
+    "purse",
+    "sack",
+    "sacking",
+    "satchel",
+    "second hand",
+    "patchouli",
+    "patchouly",
+    "overnighter",
+    "pachouli",
+    "hand",
+    "holdall",
+    "horologe",
+    "hour hand",
+    "imitation leather",
+    "indicator",
+    "instrument",
+    "leatherette",
+    "little hand",
+    "mailbag",
+    "man-made object",
+    "material",
+    "measuring device",
+    "measuring instrument",
+    "measuring system",
+    "mechanism",
+    "minute hand",
+    "movement",
+    "container",
+    "crystal",
+    "device",
+    "dial",
+    "eau de cologne",
+    "eau de toilette",
+    "fabric",
+    "briefcase",
+    "broad arrow",
+    "big hand",
+    "chronograph",
+    "chronoscope",
+    "cloth",
+    "cologne"
+]
 
-var testObj = {
-    "results": {
-        "hasMore": true,
-        "offset": 0,
-        "count": 3,
-        "limit": 5,
-        "totalResults": 5,
-        "items": []
-    }
+function filterTag(tag){
+
+    console.log(notUseTages.some(item => item == tag ))
+    return 1
 }
 
 
-var vvv = {
-
-    "id": "COREA655A34CCAF64B4A8063B4E0C692881D",
-    "fileGroup": "contentItem",
-    "slug": "onlineshop-1481786092158-story-5",
-    "translatable": true,
-    "updatedBy": "yk.wu@oracle.com",
-    "isPublished": false,
-    "varSetId": "A5AD50BF962FBC9DE0532714000A20E6",
-    "createdBy": "yk.wu@oracle.com",
-    "latestVersion": "0.4",
-    "taxonomies": {
-        "data": [],
-        "links": [
-            {
-                "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/COREA655A34CCAF64B4A8063B4E0C692881D/taxonomies",
-                "rel": "self",
-                "method": "GET",
-                "mediaType": "application/json"
-            }
-        ]
-    },
-    "repositoryId": "DAD3889C0B024419AB9F1A2DDABC0235",
-    "name": "MONTAIGNE MM",
-    "fields": {
-        "summary": "The two exquisitely crafted, braided-leather top handle give this Montaigne MM bag in Monogram canvas a modern twist, empathized by the oversized LV charm. The cream-colored removable leather strap completes the picture. The functional interior, including multiple pockets and compartments, makes it a great everyday bag.",
-        "product": [
-            "Shoulder bags",
-            "Top-handle bags"
-        ],
-        "favoriteusers": null,
-        "color": "Gold",
-        "documents": null,
-        "industry": [
-            "AsiaPayStore"
-        ],
-        "media": {
-            "id": "CONT2AF6F15B664544DEA35FA0BD59F57F17",
-            "type": "DigitalAsset",
-            "links": [
-                {
-                    "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT2AF6F15B664544DEA35FA0BD59F57F17",
-                    "rel": "self",
-                    "method": "GET",
-                    "mediaType": "application/json"
-                }
-            ]
-        },
-        "title": "MONTAIGNE MM",
-        "contenttags": [
-            "bag",
-            "shoulder bag",
-            " overnight bag",
-            "overnight case"
-        ],
-        "contentdescription": "<!DOCTYPE html><p>&nbsp;</p>\n\n<ul>\n\t<li><bdo dir=\"ltr\">33.0&nbsp;x 23.0&nbsp;x 15.0 cm<br />\n\t( length &nbsp;x height &nbsp;x width )</bdo></li>\n\t<li>Cream</li>\n\t<li>Monogram coated canvas</li>\n\t<li>Smooth cowhide-leather trim</li>\n\t<li>Microfiber lining</li>\n\t<li>Gold-color hardware</li>\n\t<li>2 handles for hand or elbow carry</li>\n\t<li>Removable strap (drop: 35 cm/13.7 inches) for shoulder carry</li>\n\t<li>Hook to secure belongings</li>\n\t<li>Central zippered compartment with padlock</li>\n\t<li>2 wide compartments</li>\n\t<li>Double smartphone pocket</li>\n\t<li>Flat pocket</li>\n\t<li>LV leather charm</li>\n\t<li>4 protective metal bottom studs</li>\n</ul>\n",
-        "size": "33.0 x 23.0 x 15.0 cm",
-        "createdby": null,
-        "mainimgid": {
-            "id": "CONT2AF6F15B664544DEA35FA0BD59F57F17",
-            "type": "DigitalAsset",
-            "links": [
-                {
-                    "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT2AF6F15B664544DEA35FA0BD59F57F17",
-                    "rel": "self",
-                    "method": "GET",
-                    "mediaType": "application/json"
-                }
-            ]
-        },
-        "price": 1800,
-        "category": [
-            "Cafe Ambience",
-            "Cafe Sales Plays",
-            "Coffee Machines",
-            "Sales Trainings"
-        ],
-        "region": [
-            "All Regions"
-        ],
-        "brand": [
-            "LOUIS VUITTON"
-        ]
-    },
-    "status": "draft"
-}
+filterTag("dial");
