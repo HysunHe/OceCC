@@ -30,9 +30,45 @@ module.exports = {
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
         var status_adtp = "failed";
 
-        runAsync1().then(function (data) {
-            return runAsync2();
-        });
+
+        testUse();
+
+        // runAsync1().then(function (data) {
+        //     return runAsync2();
+        // });
+
+        function testUse(){
+            var outPutArr = [
+                {
+                    "id":"101",
+                    "name":"test1",
+                    "price":"$120",
+                    "color":"$120",
+                    "url":"https://www.oracle.com/cloud/content-and-experience-management/",
+                    "imageUrl":"https://iili.io/J0ygZ7.md.jpg",
+                    "des":"this a description for test1 XXXXXXXXXXXX"
+                },{
+                    "id":"102",
+                    "name":"test2",
+                    "price":"$140",
+                    "url":"https://www.oracle.com/index.html",
+                    "imageUrl":"https://www.milanstand.com/images/201803/goods_img/37321_P_1520570187236.JPG",
+                    "des":"this a description for test2 XXXXXXXXXXXX"
+                },{
+                    "id":"103",
+                    "name":"test3",
+                    "price":"$160",
+                    "url":"https://developer.oracle.com/ai-ml/",
+                    "imageUrl":"https://p0.ssl.qhimgs4.com/t0197888a68d5955dbc.jpg",
+                    "des":"this a description for test3 XXXXXXXXXXXX"
+                }
+            ]
+
+            conversation.variable("outPutArr", outPutArr);
+            conversation.transition(status_adtp);
+            conversation.keepTurn(true);
+            done();
+        }
 
         function runAsync1() {
             var p = new Promise(function (resolve, reject) {
@@ -145,6 +181,35 @@ module.exports = {
                     console.log("###############see running results ###########");
                     console.log(body);
 
+                    {
+                        "description": "",
+                        "id": "CORE46BCD76B371C4F31B71AC8EACA4F9161",
+                        "repositoryId": "03232BC331B144DA82943EA54C250177",
+                        "name": "Alma Bb Damier Ebene Brown",
+                        "fields": {
+                        "summary": "The Alma BB handbag traces its pedigree to the Art Deco original, introduced in 1934. Signature details impart a timeless elegance to this model made from graphic Damier Ebene canvas: note the golden padlock and keys, twin Toron handles and chic leather key bell. Equipped with a removable strap, this charming small bag is perfect for cross-body wear.",
+                            "color": "Brown",
+                            "media": {
+                            "id": "CONT4B395C13C56C4A649826C4A5E6DFDFE4",
+                                "type": "DigitalAsset",
+                                "links": [
+                                {
+                                    "href": "https://shenzhuoce01-sehubjapacprod.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT4B395C13C56C4A649826C4A5E6DFDFE4",
+                                    "rel": "self",
+                                    "method": "GET",
+                                    "mediaType": "application/json"
+                                }
+                            ]
+                        },
+                        "title": "Alma Bb Damier Ebene Brown",
+                            "contenttags": [
+                            "shoulder bag",
+                            "satchel",
+                            "bag",
+                            "overnight case"
+                        ]
+                    }
+                    }
 
                     var itemsCount = body.results.count;
                     console.log(itemsCount);
@@ -159,6 +224,7 @@ module.exports = {
                             "id":"101",
                             "name":"test1",
                             "price":"$120",
+                            "color":"$120",
                             "url":"https://www.oracle.com/cloud/content-and-experience-management/",
                             "imageUrl":"https://iili.io/J0ygZ7.md.jpg",
                             "des":"this a description for test1 XXXXXXXXXXXX"
