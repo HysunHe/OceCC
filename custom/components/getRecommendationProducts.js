@@ -209,14 +209,15 @@ module.exports = {
                     var itemsCount = body.results.count;
                     console.log(itemsCount);
                     if (itemsCount == 0) {
-                        conversation.variable("outPutArr", 0);
+                        conversation.variable("outPutArr", "0");
                         conversation.transition(status_adtp);
                         done();
                     } else {
                         outPutArr = [];
                         var outComeCells = body.results.items
                         outComeCells.forEach(function (v) {
-                            var nID = v.fields.media.id;
+                            var nID = v.id;
+                            var nImageId = v.fields.media.id;
                             console.log(nID);
                             var nName = v.fields.name;
                             var nPrice = v.fields.price;
