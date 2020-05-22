@@ -219,7 +219,7 @@ module.exports = {
                             var nID = v.id;
                             var nImageId = v.fields.media.id;
                             console.log(nID);
-                            var nName = v.fields.name;
+                            var nName = v.name;
                             var nPrice = v.fields.price;
                             var nStore = v.fields.industry[0];
                             var nImage = "https://www.oracle.com/a/ocom/img/rc32-app-dev-extend-applications.png";
