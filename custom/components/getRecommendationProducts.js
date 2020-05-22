@@ -38,6 +38,7 @@ module.exports = {
         // });
 
         function testUse(){
+            status_adtp = "success";
             var outPutArr = [
                 {
                     "id":"101",
