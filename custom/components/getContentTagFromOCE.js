@@ -110,7 +110,7 @@ module.exports = {
                         },
                     formData:
                         {
-                            jsonInputParameters: '{"parentID": "F1BC5EC1095678ED05A8C300C546E3164C583462DAD8"}',
+                            jsonInputParameters: '{"parentID": "F9CBCCA1436B701C469250D8215B1F7B2861B39A36A5"}',
                             primaryFile:
                                 {
                                     value: file,
@@ -177,17 +177,18 @@ module.exports = {
                             'Content-Type': 'application/json'
                         },
                     body:
+
                         {
                             operations:
                                 {
                                     addToRepository:
                                         {
-                                            repositoryId: '03232BC331B144DA82943EA54C250177',
+                                            repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
                                             externalIds: [contentID],
                                             collections: [],
                                             tags: [],
                                             connectorId: 'Documents',
-                                            channels: [{id: 'RCHANNEL0220C9107FCE45D19684A69F19494060'}],
+                                            channels: [{id: 'RCHANNELC12D88323EE541318B81817EA0794D75'}],
                                             taxonomies: []
                                         }
                                 }

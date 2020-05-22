@@ -1,11 +1,8 @@
 'use strict';
 
-var RESTClient = require('node-rest-client').Client;
-var isEmpty = require('../util/baseUtils').isEmpty;
-var getToken = require('../util/tokenUtils').tokenUtils;
-var config = require('../util/config');
+
+var config = require('./config');
 var request = require("request");
-var restClient = new RESTClient();
 var fs = require('fs');
 const path = require('path');
 var http = require('http');
@@ -20,9 +17,10 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 var url = 'https://iili.io/J0ygZ7.md.jpg';  //一张网络图片
 var checker = true;
+test.js
 var timeS = new Date().getTime();
 var locImageName = "";
-var locPath = "../image/";
+var locPath = "../components/image/";
 
 
 function downloadUrl(url) {
@@ -90,11 +88,11 @@ function runAsync1(imgPath) {
 
 function deleteall(path) {
     var files = [];
-    if(fs.existsSync(path)) {
+    if (fs.existsSync(path)) {
         files = fs.readdirSync(path);
-        files.forEach(function(file, index) {
+        files.forEach(function (file, index) {
             var curPath = path + "/" + file;
-            if(fs.statSync(curPath).isDirectory()) { // recurse
+            if (fs.statSync(curPath).isDirectory()) { // recurse
 
             } else { // delete file
                 fs.unlinkSync(curPath);
@@ -102,7 +100,6 @@ function deleteall(path) {
         });
     }
 };
-
 
 
 function runAsync2(contentID) {
@@ -201,7 +198,7 @@ function runAsync3(resp) {
                     var outID = JSON.parse(nOt).id;
                     setTimeout(function () {
                         runAsync4(outID);
-                    },1500)
+                    }, 1500)
                 }
                 else {
                     console.log(body);
@@ -242,7 +239,7 @@ function runAsync4(reId) {
                 tagArr.push(v.name);
             });
             console.log(tagArr);
-        }else{
+        } else {
             runAsync4(reId)
         }
 
@@ -363,3 +360,103 @@ downloadUrl(url).then(function (data) {
 //         }
 //     });
 // }
+
+
+var testObj = {
+    "results": {
+        "hasMore": true,
+        "offset": 0,
+        "count": 3,
+        "limit": 5,
+        "totalResults": 5,
+        "items": []
+    }
+}
+
+
+var vvv = {
+
+    "id": "COREA655A34CCAF64B4A8063B4E0C692881D",
+    "fileGroup": "contentItem",
+    "slug": "onlineshop-1481786092158-story-5",
+    "translatable": true,
+    "updatedBy": "yk.wu@oracle.com",
+    "isPublished": false,
+    "varSetId": "A5AD50BF962FBC9DE0532714000A20E6",
+    "createdBy": "yk.wu@oracle.com",
+    "latestVersion": "0.4",
+    "taxonomies": {
+        "data": [],
+        "links": [
+            {
+                "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/COREA655A34CCAF64B4A8063B4E0C692881D/taxonomies",
+                "rel": "self",
+                "method": "GET",
+                "mediaType": "application/json"
+            }
+        ]
+    },
+    "repositoryId": "DAD3889C0B024419AB9F1A2DDABC0235",
+    "name": "MONTAIGNE MM",
+    "fields": {
+        "summary": "The two exquisitely crafted, braided-leather top handle give this Montaigne MM bag in Monogram canvas a modern twist, empathized by the oversized LV charm. The cream-colored removable leather strap completes the picture. The functional interior, including multiple pockets and compartments, makes it a great everyday bag.",
+        "product": [
+            "Shoulder bags",
+            "Top-handle bags"
+        ],
+        "favoriteusers": null,
+        "color": "Gold",
+        "documents": null,
+        "industry": [
+            "AsiaPayStore"
+        ],
+        "media": {
+            "id": "CONT2AF6F15B664544DEA35FA0BD59F57F17",
+            "type": "DigitalAsset",
+            "links": [
+                {
+                    "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT2AF6F15B664544DEA35FA0BD59F57F17",
+                    "rel": "self",
+                    "method": "GET",
+                    "mediaType": "application/json"
+                }
+            ]
+        },
+        "title": "MONTAIGNE MM",
+        "contenttags": [
+            "bag",
+            "shoulder bag",
+            " overnight bag",
+            "overnight case"
+        ],
+        "contentdescription": "<!DOCTYPE html><p>&nbsp;</p>\n\n<ul>\n\t<li><bdo dir=\"ltr\">33.0&nbsp;x 23.0&nbsp;x 15.0 cm<br />\n\t( length &nbsp;x height &nbsp;x width )</bdo></li>\n\t<li>Cream</li>\n\t<li>Monogram coated canvas</li>\n\t<li>Smooth cowhide-leather trim</li>\n\t<li>Microfiber lining</li>\n\t<li>Gold-color hardware</li>\n\t<li>2 handles for hand or elbow carry</li>\n\t<li>Removable strap (drop: 35 cm/13.7 inches) for shoulder carry</li>\n\t<li>Hook to secure belongings</li>\n\t<li>Central zippered compartment with padlock</li>\n\t<li>2 wide compartments</li>\n\t<li>Double smartphone pocket</li>\n\t<li>Flat pocket</li>\n\t<li>LV leather charm</li>\n\t<li>4 protective metal bottom studs</li>\n</ul>\n",
+        "size": "33.0 x 23.0 x 15.0 cm",
+        "createdby": null,
+        "mainimgid": {
+            "id": "CONT2AF6F15B664544DEA35FA0BD59F57F17",
+            "type": "DigitalAsset",
+            "links": [
+                {
+                    "href": "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT2AF6F15B664544DEA35FA0BD59F57F17",
+                    "rel": "self",
+                    "method": "GET",
+                    "mediaType": "application/json"
+                }
+            ]
+        },
+        "price": 1800,
+        "category": [
+            "Cafe Ambience",
+            "Cafe Sales Plays",
+            "Coffee Machines",
+            "Sales Trainings"
+        ],
+        "region": [
+            "All Regions"
+        ],
+        "brand": [
+            "LOUIS VUITTON"
+        ]
+    },
+    "status": "draft"
+}
