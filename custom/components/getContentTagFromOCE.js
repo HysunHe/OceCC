@@ -312,18 +312,33 @@ module.exports = {
                 body = JSON.parse(body)
                 if (body.data.length != 0) {
                     var tagArr = "";
+                    var newAsset = "";
 
-                    tagArr = body.data[0].name;
-                    for (var k = 1; k< body.data.length;k++){
+                    for (var m = 0; m< body.data.length;m++){
 
-                        if(!tagIsJunk(body.data[k].name))
-                        tagArr += ","+ body.data[k].name
+                        if(tagIsAsset(body.data[m].name) != "0")
+                            newAsset  = tagIsAsset(body.data[m].name)
+                    }
+
+
+
+                    for (var k = 0; k< body.data.length;k++){
+
+                        if(!tagIsJunk(body.data[k].name)){
+                            if (tagArr == ""){
+                                tagArr =  body.data[k].name
+                            } else{
+                                tagArr += ","+ body.data[k].name
+                            }
+                        }
+
                     }
 
                     console.log(tagArr);
 
                     var status_adtp = "success";
 
+                    conversation.variable("itemName", newAsset);
                     conversation.variable("tagsArr", tagArr);
                     conversation.transition(status_adtp);
                     conversation.keepTurn(true);
@@ -396,8 +411,24 @@ module.exports = {
             "chronograph",
             "chronoscope",
             "cloth",
-            "cologne"
+            "cologne",
+            'bag',
+            'watch',
+            'perfume'
         ]
+
+        let regItem = ['bag', 'watch', 'perfume'];
+
+        function tagIsAsset(tag) {
+            var oT = "0";
+            for (var i = 0; i < regItem.length; i++) {
+                if (tag == regItem[i]) {
+                    oT = regItem[i]
+                }
+            }
+
+            return oT
+        }
 
         function tagIsJunk(tag){
             return notUseTages.some(item => item == tag )

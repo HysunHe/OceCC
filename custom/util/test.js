@@ -244,6 +244,7 @@ function runAsync4(reId) {
 
     });
 }
+
 //
 // downloadUrl(url).then(function (data) {
 //     return runAsync1(data);
@@ -359,75 +360,95 @@ function runAsync4(reId) {
 //         }
 //     });
 // }
+//
+// let notUseTages = [
+//     "valise",
+//     "weekender",
+//     "after-shave",
+//     "after-shave lotion",
+//     "smelling bottle",
+//     "sweep hand",
+//     "sweep-second",
+//     "tacheometer",
+//     "tachymeter",
+//     "textile",
+//     "ticker",
+//     "timekeeper",
+//     "timepiece",
+//     "timer",
+//     "toilet articles",
+//     "toilet water",
+//     "toiletry",
+//     "poke",
+//     "portfolio",
+//     "purse",
+//     "sack",
+//     "sacking",
+//     "satchel",
+//     "second hand",
+//     "patchouli",
+//     "patchouly",
+//     "overnighter",
+//     "pachouli",
+//     "hand",
+//     "holdall",
+//     "horologe",
+//     "hour hand",
+//     "imitation leather",
+//     "indicator",
+//     "instrument",
+//     "leatherette",
+//     "little hand",
+//     "mailbag",
+//     "man-made object",
+//     "material",
+//     "measuring device",
+//     "measuring instrument",
+//     "measuring system",
+//     "mechanism",
+//     "minute hand",
+//     "movement",
+//     "container",
+//     "crystal",
+//     "device",
+//     "dial",
+//     "eau de cologne",
+//     "eau de toilette",
+//     "fabric",
+//     "briefcase",
+//     "broad arrow",
+//     "big hand",
+//     "chronograph",
+//     "chronoscope",
+//     "cloth",
+//     "cologne"
+// ]
+//
+// function filterTag(tag){
+//
+//     console.log(notUseTages.some(item => item == tag ))
+//     return 1
+// }
+//
+//
+// filterTag("dial");
 
-let notUseTages = [
-    "valise",
-    "weekender",
-    "after-shave",
-    "after-shave lotion",
-    "smelling bottle",
-    "sweep hand",
-    "sweep-second",
-    "tacheometer",
-    "tachymeter",
-    "textile",
-    "ticker",
-    "timekeeper",
-    "timepiece",
-    "timer",
-    "toilet articles",
-    "toilet water",
-    "toiletry",
-    "poke",
-    "portfolio",
-    "purse",
-    "sack",
-    "sacking",
-    "satchel",
-    "second hand",
-    "patchouli",
-    "patchouly",
-    "overnighter",
-    "pachouli",
-    "hand",
-    "holdall",
-    "horologe",
-    "hour hand",
-    "imitation leather",
-    "indicator",
-    "instrument",
-    "leatherette",
-    "little hand",
-    "mailbag",
-    "man-made object",
-    "material",
-    "measuring device",
-    "measuring instrument",
-    "measuring system",
-    "mechanism",
-    "minute hand",
-    "movement",
-    "container",
-    "crystal",
-    "device",
-    "dial",
-    "eau de cologne",
-    "eau de toilette",
-    "fabric",
-    "briefcase",
-    "broad arrow",
-    "big hand",
-    "chronograph",
-    "chronoscope",
-    "cloth",
-    "cologne"
-]
 
-function filterTag(tag){
+let regItem = ['bag', 'watch', 'perfume'];
 
-    console.log(notUseTages.some(item => item == tag ))
-    return 1
+function tagIsAsset(tag) {
+
+    var ck = regItem.length;
+    console.log(ck)
+    var oT = "0";
+    for (var i = 0; i < regItem.length; i++) {
+        if (tag == regItem[i]) {
+            oT = regItem[i]
+        }
+    }
+
+    return oT
+
 }
 
-
-filterTag("dial");
+console.log(tagIsAsset('bag1'));

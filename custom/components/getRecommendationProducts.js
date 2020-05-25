@@ -94,18 +94,19 @@ module.exports = {
                             main:
                                 [{
                                     rules:
-                                        [{
-                                            operator: 'bestMatch',
-                                            parameters:
-                                                [{
-                                                    contentType: {name: 'SE-Story'},
-                                                    id: '516D4F3E9DA74ECBA590CF5F5F6E3AC5',
-                                                    name: 'contenttags',
-                                                    type: 'userAssetField'
-                                                },
-                                                    {value: gotTag1, type: 'literal'},
-                                                    {value: gotTag2, type: 'literal'}]
-                                        },
+                                        [
+                                            {
+                                                operator: 'bestMatch',
+                                                parameters:
+                                                    [{
+                                                        contentType: {name: 'SE-Story'},
+                                                        id: '516D4F3E9DA74ECBA590CF5F5F6E3AC5',
+                                                        name: 'contenttags',
+                                                        type: 'userAssetField'
+                                                    },
+                                                        {value: gotTag1, type: 'literal'},
+                                                        {value: gotTag2, type: 'literal'}]
+                                            },
                                             {
                                                 operator: 'bestMatch',
                                                 parameters:
@@ -118,20 +119,20 @@ module.exports = {
                                                         {type: 'literal', value: gotTag1},
                                                         {type: 'literal', value: gotTag2}
                                                     ]
-                                            },
-                                            {
-                                                operator: 'bestMatch',
-                                                parameters:
-                                                    [{
-                                                        contentType: {name: 'SE-Story'},
-                                                        id: 'B58EE504741344AD97FBD2F34771CAEE',
-                                                        name: 'product',
-                                                        type: 'userAssetField'
-                                                    },
-                                                        {type: 'literal', value: gotTag1},
-                                                        {type: 'literal', value: gotTag2}
-                                                    ]
                                             }
+                                            //     {
+                                            //         operator: 'bestMatch',
+                                            //         parameters:
+                                            //             [{
+                                            //                 contentType: {name: 'SE-Story'},
+                                            //                 id: 'B58EE504741344AD97FBD2F34771CAEE',
+                                            //                 name: 'product',
+                                            //                 type: 'userAssetField'
+                                            //             },
+                                            //                 {type: 'literal', value: gotTag1},
+                                            //                 {type: 'literal', value: gotTag2}
+                                            //             ]
+                                            //     }
                                         ],
                                     properties: {operator: 'ANY'},
                                     sort: [':relevance']
@@ -222,7 +223,7 @@ module.exports = {
                             var nName = v.name;
                             var nPrice = '$' + v.fields.price.toString();
                             var nStore = v.fields.industry[0];
-                            var nImage = "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/published/api/v1.1/assets/" + nImageId+ "/Small?format=jpg&type=responsiveimage&channelToken=4e202a590f8d4f6eaabc7e95e2f9afa1"
+                            var nImage = "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/published/api/v1.1/assets/" + nImageId + "/Small?format=jpg&type=responsiveimage&channelToken=4e202a590f8d4f6eaabc7e95e2f9afa1"
                             var nDes = v.fields.summary;
                             var nUrl = oceUrl + '/site/onlineshop/storydetails/SE-Story/' + v.id + '/' + v.slug;
 
@@ -246,13 +247,9 @@ module.exports = {
                         done();
                     }
                 });
-
             });
             return p;
-
-
         }
-
     }
 }
 ;
