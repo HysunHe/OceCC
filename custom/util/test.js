@@ -451,4 +451,8 @@ function tagIsAsset(tag) {
 
 }
 
+
+setTimeout()
 console.log(tagIsAsset('bag1'));
+
+

@@ -110,7 +110,7 @@ module.exports = {
                         },
                     formData:
                         {
-                            jsonInputParameters: '{"parentID": "F9CBCCA1436B701C469250D8215B1F7B2861B39A36A5"}',
+                            jsonInputParameters: '{"parentID": "FE1D48A9F2C300B71C2F0F5E7CE9AD77B5BC6FB762ED"}',
                             primaryFile:
                                 {
                                     value: file,
@@ -183,12 +183,12 @@ module.exports = {
                                 {
                                     addToRepository:
                                         {
-                                            repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
-                                            externalIds: [contentID],
+                                            repositoryId: '1C7B95936A714989AD86FB354871A190',
+                                            externalIds: ['D6CFD6A4358B01A2D4B6FFBA885C0F9661945C464568'],
                                             collections: [],
                                             tags: [],
                                             connectorId: 'Documents',
-                                            channels: [{id: 'RCHANNELC12D88323EE541318B81817EA0794D75'}],
+                                            channels: [{id: 'RCHANNELE9018DC50EC34AD9988BC585D55D19F7'}],
                                             taxonomies: []
                                         }
                                 }
@@ -251,7 +251,7 @@ module.exports = {
                                 setTimeout(function () {
                                     runAsync3(resp)
                                 }, 500)
-                            }else{
+                            } else {
                                 conversation.reply(`error: Can not get tag from this image`)
                                 conversation.transition(status_adtp);
                                 conversation.keepTurn(true);
@@ -314,21 +314,20 @@ module.exports = {
                     var tagArr = "";
                     var newAsset = "";
 
-                    for (var m = 0; m< body.data.length;m++){
+                    for (var m = 0; m < body.data.length; m++) {
 
-                        if(tagIsAsset(body.data[m].name) != "0")
-                            newAsset  = tagIsAsset(body.data[m].name)
+                        if (tagIsAsset(body.data[m].name) != "0")
+                            newAsset = tagIsAsset(body.data[m].name)
                     }
 
 
+                    for (var k = 0; k < body.data.length; k++) {
 
-                    for (var k = 0; k< body.data.length;k++){
-
-                        if(!tagIsJunk(body.data[k].name)){
-                            if (tagArr == ""){
-                                tagArr =  body.data[k].name
-                            } else{
-                                tagArr += ","+ body.data[k].name
+                        if (!tagIsJunk(body.data[k].name)) {
+                            if (tagArr == "") {
+                                tagArr = body.data[k].name
+                            } else {
+                                tagArr += "," + body.data[k].name
                             }
                         }
 
@@ -430,8 +429,8 @@ module.exports = {
             return oT
         }
 
-        function tagIsJunk(tag){
-            return notUseTages.some(item => item == tag )
+        function tagIsJunk(tag) {
+            return notUseTages.some(item => item == tag)
         }
 
 

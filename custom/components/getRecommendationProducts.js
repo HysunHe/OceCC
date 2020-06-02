@@ -90,7 +90,7 @@ module.exports = {
                             name: 'test_recommendation',
                             description: '',
                             apiName: 'test_recommendation',
-                            repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
+                            repositoryId: '1C7B95936A714989AD86FB354871A190',
                             main:
                                 [{
                                     rules:
@@ -99,8 +99,8 @@ module.exports = {
                                                 operator: 'bestMatch',
                                                 parameters:
                                                     [{
-                                                        contentType: {name: 'SE-Story'},
-                                                        id: '516D4F3E9DA74ECBA590CF5F5F6E3AC5',
+                                                        contentType: {name: 'CSE-Story'},
+                                                        id: 'F32BBC43DD024633860C8475B9B86548',
                                                         name: 'contenttags',
                                                         type: 'userAssetField'
                                                     },
@@ -111,8 +111,8 @@ module.exports = {
                                                 operator: 'bestMatch',
                                                 parameters:
                                                     [{
-                                                        contentType: {name: 'SE-Story'},
-                                                        id: 'C94C8EFAA25244868892FAC4028200B7',
+                                                        contentType: {name: 'CSE-Story'},
+                                                        id: '60B091A5AEEB4265A218D108A849F4AF',
                                                         name: 'title',
                                                         type: 'userAssetField'
                                                     },
@@ -137,9 +137,9 @@ module.exports = {
                                     properties: {operator: 'ANY'},
                                     sort: [':relevance']
                                 }],
-                            channels: [{id: 'CHANNELFC9C84C86994247CDA59D360907912466EBA9AF8876F'}, {"id": "RCHANNELC12D88323EE541318B81817EA0794D75"}],
+                            channels: [{id: 'CHANNELF41166451CB1635C53DE8F187A15BB64545DA695C5D8'}],
                             defaults: [{items: [], sort: []}],
-                            contentTypes: [{name: 'SE-Story'}]
+                            contentTypes: [{name: 'CSE-Story'}]
                         },
                     json: true
                 };
@@ -223,7 +223,7 @@ module.exports = {
                             var nName = v.name;
                             var nPrice = '$' + v.fields.price.toString();
                             var nStore = v.fields.industry[0];
-                            var nImage = "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/published/api/v1.1/assets/" + nImageId + "/Small?format=jpg&type=responsiveimage&channelToken=4e202a590f8d4f6eaabc7e95e2f9afa1"
+                            var nImage = oceUrl + "/content/published/api/v1.1/assets/" + nImageId + "/Small?format=jpg&type=responsiveimage&channelToken=1b61848123364ea3841810e548be9b61"
                             var nDes = v.fields.summary;
                             var nUrl = oceUrl + '/site/onlineshop/storydetails/SE-Story/' + v.id + '/' + v.slug;
 
