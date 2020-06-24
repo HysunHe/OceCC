@@ -4,6 +4,7 @@ var config = require('../util/config');
 var request = require("request");
 var fs = require('fs');
 var Path = require('path')
+var crypto = require('crypto');
 
 module.exports = {
     metadata: () => ({
@@ -83,7 +84,19 @@ module.exports = {
                         console.log("文件[" + img_filename + "]下载完毕");
                         console.log(mPath);
                         locImageName = img_filename;
-                        resolve(mPath);
+                        fs.readFile(mPath,'binary',function(err,data){
+                            if(err){
+                                console.log(err)
+                            }else{
+                                const buffer = new Buffer(data, 'binary');
+                                var ownImage = buffer.toString('base64');
+                                var ownResult = crypto.createHash('md5').update(ownImage).digest("hex");
+                                console.log(ownResult);
+                                config.imageID = ownResult
+                            }
+                            resolve(mPath);
+                        });
+
                     });
                 }
                 )
@@ -110,7 +123,7 @@ module.exports = {
                         },
                     formData:
                         {
-                            jsonInputParameters: '{"parentID": "FE1D48A9F2C300B71C2F0F5E7CE9AD77B5BC6FB762ED"}',
+                            jsonInputParameters: '{"parentID": "F9CBCCA1436B701C469250D8215B1F7B2861B39A36A5"}',
                             primaryFile:
                                 {
                                     value: file,
@@ -183,12 +196,12 @@ module.exports = {
                                 {
                                     addToRepository:
                                         {
-                                            repositoryId: '1C7B95936A714989AD86FB354871A190',
-                                            externalIds: ['D6CFD6A4358B01A2D4B6FFBA885C0F9661945C464568'],
+                                            repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
+                                            externalIds: [contentID],
                                             collections: [],
                                             tags: [],
                                             connectorId: 'Documents',
-                                            channels: [{id: 'RCHANNELE9018DC50EC34AD9988BC585D55D19F7'}],
+                                            channels: [{id: 'RCHANNELC12D88323EE541318B81817EA0794D75'}],
                                             taxonomies: []
                                         }
                                 }
@@ -251,7 +264,7 @@ module.exports = {
                                 setTimeout(function () {
                                     runAsync3(resp)
                                 }, 500)
-                            } else {
+                            }else{
                                 conversation.reply(`error: Can not get tag from this image`)
                                 conversation.transition(status_adtp);
                                 conversation.keepTurn(true);
@@ -314,20 +327,21 @@ module.exports = {
                     var tagArr = "";
                     var newAsset = "";
 
-                    for (var m = 0; m < body.data.length; m++) {
+                    for (var m = 0; m< body.data.length;m++){
 
-                        if (tagIsAsset(body.data[m].name) != "0")
-                            newAsset = tagIsAsset(body.data[m].name)
+                        if(tagIsAsset(body.data[m].name) != "0")
+                            newAsset  = tagIsAsset(body.data[m].name)
                     }
 
 
-                    for (var k = 0; k < body.data.length; k++) {
 
-                        if (!tagIsJunk(body.data[k].name)) {
-                            if (tagArr == "") {
-                                tagArr = body.data[k].name
-                            } else {
-                                tagArr += "," + body.data[k].name
+                    for (var k = 0; k< body.data.length;k++){
+
+                        if(!tagIsJunk(body.data[k].name)){
+                            if (tagArr == ""){
+                                tagArr =  body.data[k].name
+                            } else{
+                                tagArr += ","+ body.data[k].name
                             }
                         }
 
@@ -429,8 +443,8 @@ module.exports = {
             return oT
         }
 
-        function tagIsJunk(tag) {
-            return notUseTages.some(item => item == tag)
+        function tagIsJunk(tag){
+            return notUseTages.some(item => item == tag )
         }
 
 

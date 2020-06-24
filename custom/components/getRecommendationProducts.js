@@ -30,7 +30,7 @@ module.exports = {
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
         var status_adtp = "failed";
         var outPutArr;
-
+        var nPurl = "https://test2.paydollar.com/b2cDemo/eng/payment/payForm.jsp?c=O51fpLYTovUvrQj0D8kXjey5iNKlx%2BLY1FmAEyQMi6E%3D";
         // testUse();
 
         runAsync1().then(function (data) {
@@ -72,77 +72,159 @@ module.exports = {
 
         function runAsync1() {
             var p = new Promise(function (resolve, reject) {
-
-
-                var options = {
-                    method: 'PUT',
-                    url: oceUrl + '/content/management/api/v1.1/personalization/recommendations/RECO4441E4CB03F24A3C935F7C4BFBA49A39?links=none',
-                    qs: {links: 'none'},
-                    headers:
-                        {
-                            'cache-control': 'no-cache',
-                            'Content-Type': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'Authorization': myAuth
-                        },
-                    body:
-                        {
-                            name: 'test_recommendation',
-                            description: '',
-                            apiName: 'test_recommendation',
-                            repositoryId: '1C7B95936A714989AD86FB354871A190',
-                            main:
-                                [{
-                                    rules:
-                                        [
-                                            {
-                                                operator: 'bestMatch',
-                                                parameters:
-                                                    [{
-                                                        contentType: {name: 'CSE-Story'},
-                                                        id: 'F32BBC43DD024633860C8475B9B86548',
-                                                        name: 'contenttags',
-                                                        type: 'userAssetField'
-                                                    },
-                                                        {value: gotTag1, type: 'literal'},
-                                                        {value: gotTag2, type: 'literal'}]
-                                            },
-                                            {
-                                                operator: 'bestMatch',
-                                                parameters:
-                                                    [{
-                                                        contentType: {name: 'CSE-Story'},
-                                                        id: '60B091A5AEEB4265A218D108A849F4AF',
-                                                        name: 'title',
-                                                        type: 'userAssetField'
-                                                    },
-                                                        {type: 'literal', value: gotTag1},
-                                                        {type: 'literal', value: gotTag2}
+                var imageID = config.imageID;
+                var options = {};
+                if (imageID != '') {
+                    options = {
+                        method: 'PUT',
+                        url: oceUrl + '/content/management/api/v1.1/personalization/recommendations/RECO4441E4CB03F24A3C935F7C4BFBA49A39?links=none',
+                        qs: {links: 'none'},
+                        headers:
+                            {
+                                'cache-control': 'no-cache',
+                                'Content-Type': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Authorization': myAuth
+                            },
+                        body:
+                            {
+                                name: 'test_recommendation',
+                                description: '',
+                                apiName: 'test_recommendation',
+                                repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
+                                main:
+                                    [{
+                                        rules:
+                                            [
+                                                {
+                                                    operator: 'bestMatch',
+                                                    parameters:
+                                                        [{
+                                                            contentType: {name: 'SE-Story'},
+                                                            id: '516D4F3E9DA74ECBA590CF5F5F6E3AC5',
+                                                            name: 'contenttags',
+                                                            type: 'userAssetField'
+                                                        },
+                                                            {value: gotTag1, type: 'literal'},
+                                                            {value: gotTag2, type: 'literal'}]
+                                                },
+                                                {
+                                                    operator: 'bestMatch',
+                                                    parameters:
+                                                        [{
+                                                            contentType: {name: 'SE-Story'},
+                                                            id: 'C94C8EFAA25244868892FAC4028200B7',
+                                                            name: 'title',
+                                                            type: 'userAssetField'
+                                                        },
+                                                            {type: 'literal', value: gotTag1},
+                                                            {type: 'literal', value: gotTag2}
+                                                        ]
+                                                },
+                                                {
+                                                    operator: 'bestMatch',
+                                                    parameters: [
+                                                        {
+                                                            type: "userAssetField",
+                                                            id: "18C374BFFCB04113B0129DFCA11CB75D",
+                                                            name: "MainImgId",
+                                                            contentType: {
+                                                                "name": "SE-Story"
+                                                            }
+                                                        },
+                                                        {
+                                                            type: "literal",
+                                                            value: imageID
+                                                        }
                                                     ]
-                                            }
-                                            //     {
-                                            //         operator: 'bestMatch',
-                                            //         parameters:
-                                            //             [{
-                                            //                 contentType: {name: 'SE-Story'},
-                                            //                 id: 'B58EE504741344AD97FBD2F34771CAEE',
-                                            //                 name: 'product',
-                                            //                 type: 'userAssetField'
-                                            //             },
-                                            //                 {type: 'literal', value: gotTag1},
-                                            //                 {type: 'literal', value: gotTag2}
-                                            //             ]
-                                            //     }
-                                        ],
-                                    properties: {operator: 'ANY'},
-                                    sort: [':relevance']
-                                }],
-                            channels: [{id: 'CHANNELF41166451CB1635C53DE8F187A15BB64545DA695C5D8'}],
-                            defaults: [{items: [], sort: []}],
-                            contentTypes: [{name: 'CSE-Story'}]
-                        },
-                    json: true
-                };
+                                                }
+                                            ],
+                                        properties: {
+                                            operator: 'ANY'
+                                        }
+                                        ,
+                                        sort: [':relevance']
+                                    }],
+                                channels: [{id: 'CHANNELFC9C84C86994247CDA59D360907912466EBA9AF8876F'}, {"id": "RCHANNELC12D88323EE541318B81817EA0794D75"}],
+                                defaults:
+                                    [{items: [], sort: []}],
+                                contentTypes:
+                                    [{name: 'SE-Story'}]
+                            },
+                        json: true
+                    }
+                    ;
+                } else {
+                    options = {
+                        method: 'PUT',
+                        url: oceUrl + '/content/management/api/v1.1/personalization/recommendations/RECO4441E4CB03F24A3C935F7C4BFBA49A39?links=none',
+                        qs: {links: 'none'},
+                        headers:
+                            {
+                                'cache-control': 'no-cache',
+                                'Content-Type': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Authorization': myAuth
+                            },
+                        body:
+                            {
+                                name: 'test_recommendation',
+                                description: '',
+                                apiName: 'test_recommendation',
+                                repositoryId: 'DAD3889C0B024419AB9F1A2DDABC0235',
+                                main:
+                                    [{
+                                        rules:
+                                            [
+                                                {
+                                                    operator: 'bestMatch',
+                                                    parameters:
+                                                        [{
+                                                            contentType: {name: 'SE-Story'},
+                                                            id: '516D4F3E9DA74ECBA590CF5F5F6E3AC5',
+                                                            name: 'contenttags',
+                                                            type: 'userAssetField'
+                                                        },
+                                                            {value: gotTag1, type: 'literal'},
+                                                            {value: gotTag2, type: 'literal'}]
+                                                },
+                                                {
+                                                    operator: 'bestMatch',
+                                                    parameters:
+                                                        [{
+                                                            contentType: {name: 'SE-Story'},
+                                                            id: 'C94C8EFAA25244868892FAC4028200B7',
+                                                            name: 'title',
+                                                            type: 'userAssetField'
+                                                        },
+                                                            {type: 'literal', value: gotTag1},
+                                                            {type: 'literal', value: gotTag2}
+                                                        ]
+                                                }
+                                                //     {
+                                                //         operator: 'bestMatch',
+                                                //         parameters:
+                                                //             [{
+                                                //                 contentType: {name: 'SE-Story'},
+                                                //                 id: 'B58EE504741344AD97FBD2F34771CAEE',
+                                                //                 name: 'product',
+                                                //                 type: 'userAssetField'
+                                                //             },
+                                                //                 {type: 'literal', value: gotTag1},
+                                                //                 {type: 'literal', value: gotTag2}
+                                                //             ]
+                                                //     }
+                                            ],
+                                        properties: {operator: 'ANY'},
+                                        sort: [':relevance']
+                                    }],
+                                channels: [{id: 'CHANNELFC9C84C86994247CDA59D360907912466EBA9AF8876F'}, {"id": "RCHANNELC12D88323EE541318B81817EA0794D75"}],
+                                defaults: [{items: [], sort: []}],
+                                contentTypes: [{name: 'SE-Story'}]
+                            },
+                        json: true
+                    };
+                }
 
 
                 request(options, function (error, response, body) {
@@ -223,7 +305,7 @@ module.exports = {
                             var nName = v.name;
                             var nPrice = '$' + v.fields.price.toString();
                             var nStore = v.fields.industry[0];
-                            var nImage = oceUrl + "/content/published/api/v1.1/assets/" + nImageId + "/Small?format=jpg&type=responsiveimage&channelToken=1b61848123364ea3841810e548be9b61"
+                            var nImage = "https://ydoce-aplcloud.cec.ocp.oraclecloud.com/content/published/api/v1.1/assets/" + nImageId + "/Small?format=jpg&type=responsiveimage&channelToken=4e202a590f8d4f6eaabc7e95e2f9afa1"
                             var nDes = v.fields.summary;
                             var nUrl = oceUrl + '/site/onlineshop/storydetails/SE-Story/' + v.id + '/' + v.slug;
 
@@ -234,7 +316,8 @@ module.exports = {
                                 "store": nStore,
                                 "url": nUrl,
                                 "imageUrl": nImage,
-                                "des": nDes
+                                "des": nDes,
+                                "paymentUrl": nPurl
                             }
 
                             outPutArr.push(nObj);
