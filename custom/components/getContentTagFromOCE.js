@@ -62,27 +62,14 @@ module.exports = {
                             console.log(err);
                         }
                     });
-
-                    console.log('downloading')
                     var img_filename = timeS + `pic.png`;
                     var mPathD = locPath + img_filename;
                     console.log('downloading to 3 ' + __dirname);
 
                     var mPath = Path.join(__dirname, mPathD);
 
-                    // var writeStream = fs.createWriteStream(mPath)
-                    // request(img_src).pipe(writeStream);
-                    // writeStream.on('open', function () {
-                    //     // console.log(mPath);
-                    //     locImageName = img_filename;
-                    //     console.log('文件写入成功')
-                    //     resolve(mPath);
-                    //
-                    // })
-
                     request(img_src).pipe(fs.createWriteStream(mPath)).on("finish", function (err) {
                         console.log("文件[" + img_filename + "]下载完毕");
-                        console.log(mPath);
                         locImageName = img_filename;
                         fs.readFile(mPath,'binary',function(err,data){
                             if(err){
@@ -91,7 +78,6 @@ module.exports = {
                                 const buffer = new Buffer(data, 'binary');
                                 var ownImage = buffer.toString('base64');
                                 var ownResult = crypto.createHash('md5').update(ownImage).digest("hex");
-                                console.log(ownResult);
                                 config.imageID = ownResult
                             }
                             resolve(mPath);
@@ -146,10 +132,6 @@ module.exports = {
                         reject(error);
                     }
                     ;
-
-                    // conversation.reply(`Greetings ` + body)
-                    // conversation.transition(status_adtp);
-                    // done();
                     console.log(JSON.parse(body).id);
                     var contentID = JSON.parse(body).id;
                     resolve(contentID);

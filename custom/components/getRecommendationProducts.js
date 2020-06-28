@@ -31,7 +31,7 @@ module.exports = {
         var status_adtp = "failed";
         var outPutArr;
         var nPurl = "https://test2.paydollar.com/b2cDemo/eng/payment/payForm.jsp?c=O51fpLYTovUvrQj0D8kXjey5iNKlx%2BLY1FmAEyQMi6E%3D";
-        // testUse();
+
 
         runAsync1().then(function (data) {
             return runAsync2();
@@ -201,19 +201,6 @@ module.exports = {
                                                             {type: 'literal', value: gotTag2}
                                                         ]
                                                 }
-                                                //     {
-                                                //         operator: 'bestMatch',
-                                                //         parameters:
-                                                //             [{
-                                                //                 contentType: {name: 'SE-Story'},
-                                                //                 id: 'B58EE504741344AD97FBD2F34771CAEE',
-                                                //                 name: 'product',
-                                                //                 type: 'userAssetField'
-                                                //             },
-                                                //                 {type: 'literal', value: gotTag1},
-                                                //                 {type: 'literal', value: gotTag2}
-                                                //             ]
-                                                //     }
                                             ],
                                         properties: {operator: 'ANY'},
                                         sort: [':relevance']

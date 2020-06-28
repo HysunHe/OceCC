@@ -15,7 +15,7 @@ const uploadFolder = config.uploadFolder;
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 
-var url = 'https://iili.io/J0ygZ7.md.jpg';  //一张网络图片
+var url = 'https://iili.io/J0ygZ7.md.jpg';  //一张网络图片 https://ibb.co/ZG16z6q"><img src="https://i.ibb.co/q7FMYMT/louis-vuitton-M43775-PM2-Front-view.jpg
 var checker = true;
 var timeS = new Date().getTime();
 var locImageName = "";
